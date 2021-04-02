@@ -1,33 +1,39 @@
-class Trash {
-    constructor(x, y,r) {
-      var options = {
-          'isStatic' :false,
-          'restitution':0.3,
-          'friction':0.5,
-          'density':1.2
-      }
-      this.body = Bodies.circle(x, y, 30, options);
-      this.width = 50;
-      this.height = 50;
-      this.x = x;
-      this.y = y;
-      this.r= r;
-      this.body=Bodies.circle(this.x, this.y, this.r/2, options)
-      World.add(world, this.body);
-      this.image = loadImage("trash.png")
-      
-      World.add(world, this.body);
-    }
-    display(){
-      var pos =this.body.position;
-      image(this.image,this.x,this.y)
-      push();
-      translate(pos.x, pos.y);
-      rectMode(CENTER);
-      fill("pink");
-      ellipse(0, 0, this.r, this.r);
-      pop();
-    }
+class Trash
+{
+	constructor(x,y,r)
+	{
+		var options={
+			isStatic:false,
+			restitution:0.3,
+			friction:0,
+			density:1.2
+
+			
+			}
+		this.x=x;
+		this.y=y;
+		this.r=r
+		this.image=loadImage("trash.png");
+		this.body=Bodies.circle(this.x, this.y, (this.r-20)/2, options)
+		World.add(world, this.body);
+
+	}
+	display()
+	{
+			
+			var paperpos=this.body.position;		
+
+			push()
+			translate(paperpos.x, paperpos.y);
+			rectMode(CENTER)
+			//strokeWeight(4);
+			fill(255,0,255)
+			imageMode(CENTER);
+			image(this.image, 0,0,this.r, this.r)
+			//ellipse(0,0,this.r, this.r);
+			pop()
+			
+	}
 
 }
 
